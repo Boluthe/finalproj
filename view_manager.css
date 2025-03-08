@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+:root{
+    --shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --accent: #a07bd2;
+    --accent_hover:#4b03a3;
+    --accent_reso:#7307f7;
+    --accent_disabled:#7307f73b;
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    list-style: none;
+}
+.header{
+    width:auto;
+    max-width:100%;
+    height:60px;
+    display:flex;
+    justify-content: space-between;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:10000;
+    border-bottom: 1px solid rgba(141, 138, 138, 0.315);
+    background: white;
+}
+
+.logo_cont{
+    height:100%;
+    width:300px;
+}
+
+.mid_cont{
+    width:1200px;
+    height:100%;
+}
+
+.last_cont{
+    width:300px;
+    height:100%;
+}
+
+
+.mid_cont ul, .last_cont ul{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+}
+
+.mid_cont ul li, .last_cont ul li{
+
+    list-style: none;
+    color:black;
+    font-weight: 500;
+    font-size:14px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    /* margin:0 10px; */
+}
+
+
+a{
+    color:black;
+    text-decoration: none;
+}
+
+h5{
+    width:100%;
+    font-size:12px;
+    font-weight:500;
+    color:black;
+}
+
+h3{
+    width:100%;
+    font-size:14px;
+    font-weight:600;
+    color:black;
+}
+
+.cent{
+    width:85%;
+    margin:0 auto;
+}
+
+.hero{
+    width:100%;
+    padding-bottom:80px;
+    margin-top:80px;
+    padding-top:1px;
+    position:relative;
+}
+
+
+
+.profile{
+    width:100%;
+    height:600px;
+    /* margin-top:50px; */
+}
+
+.profile .cent{
+    width:1200px;
+    margin:0 auto;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_cont{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight:600;
+    font-size:18px;
+    color:var(--accent_reso);
+    cursor:default;
+}
+
+
+.mid_cont ul{
+    width:600px;
+    margin:0 auto;
+}
+
+.profile_card{
+    width:500px;
+    height:100%;
+    border-radius: 26px;
+    perspective: 80px;
+    border:2px solid var(--accent_reso);
+    /* box-shadow: var(--shadow); */
+}
+
+
+.prof_cont{
+    width:100%;
+    height:200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 80px;
+}
+
+.prof{
+    width:160px;
+    height:160px;
+    border-radius: 160px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: var(--shadow); */
+    background: white;
+    display:none;
+    animation: rise .5s ease-in-out
+}
+
+.prof i{
+    font-size:70px;
+    color: var(--accent_reso);
+}
+
+.datum{
+    width: 300px;
+    height:35px;
+    color: white;
+    /* box-shadow: var(--shadow); */
+    border-radius: 8px;
+    text-align: center;
+    font-size:14px;
+    background: var(--accent_reso);
+    margin:40px auto;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    font-weight:800;
+    animation: rise .5s ease-in-out
+}
+
+
+@keyframes rise {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+        transform: translateZ(20px);
+        transform-style: preserve-3d;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        transform: translateZ(0);
+        transform-style: preserve-3d;
+    }
+}
+
+
+.message{
+    position:fixed;
+    background: var(--accent_reso);
+    color:white;
+    height:40px;
+    width:20%;
+    margin:auto;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    padding:10px;
+    border-radius: 10px;
+    left: 0; 
+    right: 0; 
+    top:0;
+    margin-left: auto; 
+    margin-right: auto; 
+    animation: fade_out 7s;
+    z-index:100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    margin-top:50px;
+}
+
+
+
+@keyframes fade_out {
+    from{
+        opacity:1;
+        /* z-index:1000000000000000000000000000000000000000000000; */
+}
+
+    to{
+        opacity:0;
+        z-index:0;
+    }
+}
