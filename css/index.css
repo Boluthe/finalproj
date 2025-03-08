@@ -308,50 +308,30 @@ span {
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 2rem 0;
-  justify-content: center; /* Center the grid */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Cards will wrap and fit horizontally */
+  gap: 2rem; /* Space between cards */
+  padding: 20px; /* Padding for the grid container */
+  justify-content: center; /* Center the grid horizontally */
+  width: 100%; /* Ensure the grid takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .tech-card {
-  padding: 1.5rem;
   background: #fff;
-  border-radius: 10px;
   border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center; /* Center text inside the card */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  justify-self: center; /* Center each tech card */
 }
 
 .tech-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.tech-card:nth-child(4),
-.tech-card:nth-child(5) {
-  grid-column: span 3; /* Make the last two tech cards span all columns */
-  justify-self: center; /* Center the last two tech cards */
-  margin-bottom: 2rem; /* Add margin to separate the last two cards */
-}
-
-.tech-card:nth-child(4) {
-  align-self: start; /* Align the fourth card to the bottom */
-}
-
-.tech-card:nth-child(5) {
-  align-self: end; /* Align the fifth card to the top */
-}
-
-.tech-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #dee2e6;
 }
 
 .tech-card img {
@@ -360,24 +340,35 @@ span {
   margin-bottom: 1rem;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    ); /* Smaller cards on mobile */
+  }
+}
+
 .benefits-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Cards will wrap and fit horizontally */
+  gap: 2rem; /* Space between cards */
+  padding: 20px; /* Padding for the grid container */
+  justify-content: center; /* Center the grid horizontally */
+  width: 100%; /* Ensure the grid takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .benefit-card {
-  flex: 1 1 calc(33.333% - 2rem);
-  max-width: calc(33.333% - 2rem);
-  text-align: center;
-  padding: 2rem;
   background: #fff;
-  color: #0f1010;
-  border-radius: 10px;
-  margin-bottom: 1.5rem; /* Add margin for wrapping */
   border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center; /* Center text inside the card */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -399,17 +390,17 @@ span {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .tech-grid,
   .benefits-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Smaller cards on mobile */
   }
-
-  .feature-card,
-  .tech-item,
-  .benefit-card {
-    margin-bottom: 1.5rem;
-  }
+}
+.feature-card,
+.tech-item,
+.benefit-card {
+  margin-bottom: 1.5rem;
 }
 
 /* Section Dividers */
@@ -509,6 +500,36 @@ span {
 #about_us {
   text-align: center; /* Align to center */
   padding: 2rem 0;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.about-details {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem; /* Increased padding for better spacing */
+  border: 1px solid rgba(221, 221, 221, 0.1); /* Make border barely visible */
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  background-color: #f9f9f9; /* Light background color to blend with the page */
+  margin-bottom: 2rem; /* Increased margin for better spacing */
+  text-align: center; /* Center text */
+}
+
+.about-details,
+.contact-details {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-details:hover,
+.contact-details:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 #about_us h1 {
