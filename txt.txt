@@ -1,0 +1,27 @@
+create table purchases(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(255),
+    supplier varchar(255),
+    quantity int(255),
+    current_stock int(255),
+    date date
+)
+
+
+
+
+
+
+
+
+
+const script = document.createElement('script');
+script.src = 'js/records.js?v=' + new Date().getTime();
+document.head.appendChild(script);
+
+
+
+
+
+
+AIzaSyB4M8GSEcTRlp0sKmIFrn49Pd8r13mpFGA

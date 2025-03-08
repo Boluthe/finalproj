@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="css/branch.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div class="header">
+        <div class="logo_cont">
+
+        </div>
+
+        <div class="mid_cont">
+            <ul>
+                <a href="dashboard.html"><li>dashboard</li></a>
+                <a href="account.html"><li>account management</li></a>
+                
+        
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="last_cont">
+            <ul>
+              
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="branch_nav">
+            <ul>
+                <li>inventory</li>
+               <li>sales reports</li>
+               <li>purchases reports</li>
+            </ul>
+        </div>
+
+        <div class="container invent">
+            <div class="cent">
+              <div class="filter">
+                <ul>
+                    <li class="fil">Filter
+
+                <form action="" id="filter_form">   <div class="large_select">
+
+                    
+                    <input type="text" hidden id="cat_input" name="category" class="input_data">
+                    <input type="text" hidden id="sup_input" name="supplier" class="input_data">
+                       <div class="filtrate">
+                            <div class="category">
+                                <h4>Categories</h4>
+
+                                <ul>
+                                    <!-- <li>Fashion</li>
+                                    <li>Food Stuff</li>
+                                    <li>Electronics</li>
+                                    <li>Beauty</li>
+                                    <li>Furniture</li>
+                                    <li>Beverages</li>
+                                    <li>Food Stuff</li> -->
+                                </ul>
+                            </div>
+
+                            <div class="supply">
+                                <h4>Suppliers</h4>
+
+                                <ul>
+                                  
+                                        <!-- <li>mama gold</li>
+                                        <li>demo</li>
+                                        <li>demo</li>
+                                        <li>abakaliki</li>
+                                        <li>demo</li>
+                                        <li>vln</li>
+                                        <li>demo</li> -->
+                                       
+                                
+                                </ul>
+                            </div>
+                       </div>
+
+                       <div class="sub">
+                            <button  class="filter_button">filter</button>
+                       </div>
+                    </div>
+                    </li>
+
+                    
+                    <li class="sort">sort
+
+                 <div class="sorter">
+                        <input type="text" hidden id="sort_input" name="sort_by">
+                        <input type="text" hidden id="order_input" name="order">
+                           <div class="sort_list">
+                                <ul>
+                                    <li>name</li>
+                                    <li>quantity</li>
+                                    <li>expiry date</li>
+                                </ul>
+                           </div>
+
+                           <div class="order">
+                                <ul>
+                                    <li>ascending</li>
+                                    <li>descending</li>
+                                </ul>
+                           </div>
+
+                           <div class="sort_sub">
+                            <button  class="">sort</button>
+                       </div>
+                        </div>
+
+                        
+
+                    </li> 
+                    <div class="search_bar">
+                      <div class="search_cont">
+                          <input type="text" placeholder="search" id="search" name="search">
+                          <button  id="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                      </div>
+                   
+                  </div>
+                 
+                </ul></form>
+            </div>
+                <div class="item_cont">
+              
+
+               
+
+                
+
+             
+
+           
+
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="container sales">
+            <div class="table_cont">
+                <div class="heading">
+                    <h4>Sales Reports</h4>
+
+
+                </div>
+
+                <section>
+                    <!--for demo wrap-->
+                   
+                    <div class="tbl-header" >
+                      <table cellpadding="0" cellspacing="0" border="0" >
+                        <thead id="sale_head">
+                          <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Current Stock</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                    <div class="tbl-content">
+                      <table cellpadding="0" cellspacing="0" border="0" id="sale_body">
+                        <tbody id="sales">
+                    
+                        
+                 
+                  
+                        </tbody>
+                      </table>
+                    </div>
+                
+                  </section>
+                  
+                  
+             
+               
+            </div>
+
+            <button class="to_pdf sale_pdf" id="sale_pdf">Export PDF</button>
+        </div>
+
+        <div class="container purchases">
+            <div class="table_cont">
+                <div class="heading">
+                    <h4>Purchases Reports</h4>
+
+
+                </div>
+
+                <section>
+                    <!--for demo wrap-->
+      
+                    <div class="tbl-header">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <thead id="purchase_head">
+                          <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>supplier</th>
+                            <th>Current Stock</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                    <div class="tbl-content">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody id="tbody">
+            
+                        
+                 
+                  
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                  
+                  
+             
+               
+            </div>
+            
+            <button class="to_pdf" id="purchase_pdf">Export PDF</button>
+        </div>
+    </div>
+</body>
+<script src="js/dom.js"></script>
+<script src="js/dom2.js"></script>
+<script src="js/records.js"></script>
+<script src="js/branch.js"></script>
+<script src="js/admin_session.js"></script>
+</html>

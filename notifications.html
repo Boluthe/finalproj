@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="css/manager.css">
+    <link rel="stylesheet" href="css/record_sales.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="message">
+
+    </div>
+
+    <div class="screen_overlay">
+        <div class="container action">
+           <div class="ac_cent">
+            <h1>Delete <span id="name">Branch</span>'s Account?</h1>
+
+            <div class="options">
+            <form id="delete_form"> 
+                <input type="text" id="branch_id" hidden name="id">
+                <input type="text" id="branch" hidden name="branch">
+                <button id="sale_submit">Yes</button></form> 
+                <button id="no">No</button>
+            </div>
+           </div>
+        </div>
+    </div>
+
+
+    <div class="header">
+      <div class="logo_cont">
+
+      </div>
+
+      <div class="mid_cont">
+          <ul>
+              <a href="manager_dashboard.html"><li>dashboard</li></a>
+              <a href="record_sales.html"><li> sales management</li></a>
+              <a href="record_purchases.html"><li> purchases management</li></a>
+              <a href="new_product.html"><li> New Product</li></a>
+             
+              <!-- <li>reports</li> -->
+              <li></li>
+          </ul>
+      </div>
+
+      <div class="last_cont">
+         <ul>
+         
+          <!-- <a href="logout.php"><li>Login</li></a> -->
+         </ul>
+      </div>
+  </div>
+
+    <div class="side_bar">
+        <ul>
+          <a href="manager_dashboard.html"> <li>
+            <div class="ico">
+              <i class="fa-solid fa-warehouse"></i>
+            </div>
+
+            <h5>Inventory</h5>
+          </li></a> 
+
+          <a href="notifications.html"> <li>
+            <div class="ico notify">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <h5>Notifications</h5>
+          </li></a> 
+
+          <a href="logout.php"> <li>
+            <div class="ico">
+                <i class="fa-solid fa-door-open"></i>
+            </div>
+
+            <h5>Sign Out</h5>
+          </li></a> 
+
+     
+        </ul>
+    </div>
+
+    <div class="hero">
+        <div class="container record">
+            <div class="table_cont">
+                <div class="heading">
+                    <h4>Expirations Due</h4>
+
+
+                </div>
+
+                <section>
+                    <!--for demo wrap-->
+      
+                    <div class="tbl-header">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                          <tr>
+                            <!-- <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Current Stock</th> -->
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                    <div class="tbl-content">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody id="tbody">
+<!--                      
+                            <tr>
+                                <td><div class="exp_img"><img src="pictures\287707942__26326.jpg" alt=""></div></td>
+                                <td>${datum.quantity}</td>
+                                <td>${datum.date}</td>
+                                <td>${datum.customer}</td>
+                         
+                              </tr> -->
+                 
+                  
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                  
+                  
+             
+               
+            </div>
+        </div>
+
+
+
+        <div class="container record">
+          <div class="table_cont">
+              <div class="heading">
+                  <h4>Low Stock</h4>
+
+
+              </div>
+
+              <section>
+                  <!--for demo wrap-->
+    
+                  <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <thead>
+                        <tr>
+                          <!-- <th>Product</th>
+                          <th>Quantity</th>
+                          <th>Date</th>
+                          <th>Customer</th>
+                          <th>Current Stock</th> -->
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                  <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tbody id="low">
+<!--                      
+                          <tr>
+                              <td><div class="exp_img"><img src="pictures\287707942__26326.jpg" alt=""></div></td>
+                              <td>${datum.quantity}</td>
+                              <td>${datum.date}</td>
+                              <td>${datum.customer}</td>
+                       
+                            </tr> -->
+               
+                
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+                
+                
+           
+             
+          </div>
+      </div>
+    </div>
+</body>
+<script src="js/dom.js"></script>
+<script src="js/dom2.js"></script>
+<script src="js/session.js"></script>
+<script src="js/notifications.js"></script>
+</html>

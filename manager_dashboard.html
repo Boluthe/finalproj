@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="css/manager.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="message">
+
+    </div>
+
+    <div class="screen_overlay">
+        <div class="container action">
+           <div class="ac_cent">
+            <h1>Delete <span id="name">Branch</span>?</h1>
+
+            <div class="options">
+            <form id="delete_form"> 
+                <input type="text" id="id" hidden name="id">
+                <button id="sale_submit">Yes</button></form> 
+                <button id="no">No</button>
+            </div>
+           </div>
+        </div>
+    </div>
+   
+    <div class="header">
+        <div class="logo_cont">
+
+        </div>
+
+        <div class="mid_cont">
+            <ul>
+                <a href="manager_dashboard.html"><li>dashboard</li></a>
+                <a href="record_sales.html"><li> sales management</li></a>
+                <a href="record_purchases.html"><li> purchases management</li></a>
+                <a href="new_product.html"><li> New Product</li></a>
+               
+                <!-- <li>reports</li> -->
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="last_cont">
+           <ul>
+           
+            <!-- <a href="logout.php"><li>Login</li></a> -->
+           </ul>
+        </div>
+    </div>
+
+    <div class="side_bar">
+        <ul>
+          <a href="manager_dashboard.html"> <li>
+            <div class="ico">
+                <i class="fa-solid fa-warehouse"></i>
+            </div>
+
+            <h5>Inventory</h5>
+          </li></a> 
+
+          <a href="notifications.html"> <li>
+            <div class="ico notify">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <h5>Notifications</h5>
+          </li></a> 
+
+          <a href="logout.php"> <li>
+            <div class="ico">
+                <i class="fa-solid fa-door-open"></i>
+            </div>
+
+            <h5>Sign Out</h5>
+          </li></a> 
+
+     
+        </ul>
+    </div>
+
+    <div class="hero">
+   
+
+        <div class="container invent">
+            <div class="cent">
+                <div class="filter">
+                    <ul>
+                        <li class="fil">Filter
+
+                    <form action="" id="filter_form">   <div class="large_select">
+
+                        
+                        <input type="text" hidden id="cat_input" name="category" class="input_data">
+                        <input type="text" hidden id="sup_input" name="supplier" class="input_data">
+                           <div class="filtrate">
+                                <div class="category">
+                                    <h4>Categories</h4>
+
+                                    <ul>
+                                        <!-- <li>Fashion</li>
+                                        <li>Food Stuff</li>
+                                        <li>Electronics</li>
+                                        <li>Beauty</li>
+                                        <li>Furniture</li>
+                                        <li>Beverages</li>
+                                        <li>Food Stuff</li> -->
+                                    </ul>
+                                </div>
+
+                                <div class="supply">
+                                    <h4>Suppliers</h4>
+
+                                    <ul>
+                                      
+                                            <!-- <li>mama gold</li>
+                                            <li>demo</li>
+                                            <li>demo</li>
+                                            <li>abakaliki</li>
+                                            <li>demo</li>
+                                            <li>vln</li>
+                                            <li>demo</li> -->
+                                           
+                                    
+                                    </ul>
+                                </div>
+                           </div>
+
+                           <div class="sub">
+                                <button  class="filter_button">filter</button>
+                           </div>
+                        </div>
+                        </li>
+
+                        
+                        <li class="sort">sort
+
+                     <div class="sorter">
+                            <input type="text" hidden id="sort_input" name="sort_by">
+                            <input type="text" hidden id="order_input" name="order">
+                               <div class="sort_list">
+                                    <ul>
+                                        <li>name</li>
+                                        <li>quantity</li>
+                                        <li>expiry date</li>
+                                    </ul>
+                               </div>
+
+                               <div class="order">
+                                    <ul>
+                                        <li>ascending</li>
+                                        <li>descending</li>
+                                    </ul>
+                               </div>
+
+                               <div class="sort_sub">
+                                <button  class="">sort</button>
+                           </div>
+                            </div>
+
+                            
+
+                        </li> 
+
+                        <div class="search_bar">
+                            <div class="search_cont">
+                                <input type="text" placeholder="search" id="search" name="search">
+                                <button  id="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                         
+                        </div>
+                    </ul></form>
+                </div>
+                  
+                <div class="item_cont">
+                    <!-- <div class="item_card">
+                        <div class="item">
+                            <div class="item_pic">
+                                <img src="pictures\Abakaliki-rice-25kg.jpg" alt="">
+                            </div>
+
+                            <div class="item_details">
+                              <div class="data"><h4>Stock:</h4> <p>21</p></div>
+                              <div class="data"><h4>Category:</h4> <p>women</p></div>
+                              <div class="data"><h4>Supplier:</h4> <p>Danami</p></div>
+                              <div class="data"><h4>Expiration:</h4> <p>01/03/2026</p></div>
+                            </div>
+                        </div>
+
+                        <div class="item_name">
+                           <h4>Black Stilletos</h4> 
+                        </div>
+                      
+                    </div> -->
+
+                  
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/dom.js"></script>
+<script src="js/session.js"></script>
+<script src="js/dashboard.js"></script>
+</html>

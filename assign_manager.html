@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="css/create_manager.css">
+    <link rel="stylesheet" href="css/record_sales.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="message" id="message">
+       
+    </div>
+    <div class="header">
+        <div class="logo_cont">
+
+        </div>
+
+        <div class="mid_cont">
+            <ul>
+                <a href="dashboard.html"><li>dashboard</li></a>
+                <a href="account.html"><li>account management</li></a>
+               
+         
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="last_cont">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="container form_cont">
+            <form id="assign_form" autocomplete="off"><div class="cent" >
+                 <h1 class="assign_header">Assign Manager To </h1>
+
+
+                 <div class="ico field">
+                    <i class="fa-solid fa-people-roof"></i>
+                 </div>
+ 
+      
+                
+                 <input type="text" placeholder="branch name(e.g branch 1)" id="data" class="branch_name" name="branch" readonly>
+                 <input type="text" placeholder="address" id="manager"  class="" name="manager" autocomplete="off">
+                 <input type="text" placeholder="address" id="manager_name"  class="" name="manager_name" autocomplete="off">
+
+                 <div class="item_selector field">
+                    <h4 class="animate-text">Select Manager</h4> 
+ 
+ 
+                     <div class="items">
+                         <!-- <div class="search_bar">
+                             <input type="text" placeholder="search product">
+                         </div> -->
+                         <ul>
+                             <!-- <li>Samsung Refrigerator</li>
+                             <li>Oraimo Speakers</li>
+                             <li>Cordless Clippers</li>
+                             <li>Wireless Keyboard</li>
+                             <li>Standing Fan</li> -->
+                         </ul>
+                     </div>
+                 </div>
+            
+
+ 
+                 <button disabled="disabled" id="sale_submit" class="field">Submit</button>
+
+
+                 
+             </div></form> 
+         </div>
+ 
+    </div>
+</body>
+<script src="js/dom.js"></script>
+<script src="js/dom2.js"></script>
+<script src="js/assign_manager.js"></script>
+<script src="js/admin_session.js"></script>
+</html>
