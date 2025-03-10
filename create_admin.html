@@ -5,7 +5,7 @@
       src="https://kit.fontawesome.com/b782cf5553.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/create_manager.css" />
+    <link rel="stylesheet" href="css/auth.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Admin Account</title>
@@ -36,60 +36,71 @@
                 <i class="fa-solid fa-people-roof"></i>
               </div>
 
-              <input
-                type="text"
-                placeholder="Full Name"
-                class="field"
-                name="name"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                class="field"
-                name="email"
-                autocomplete="off"
-                required
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                class="field"
-                name="phone"
-                required
-              />
-
-              <!-- Add these new fields for store creation -->
-              <input
-                type="text"
-                placeholder="Store Name"
-                class="field"
-                name="store_name"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Store Address"
-                class="field"
-                name="store_address"
-                required
-              />
-
-              <input
-                type="password"
-                placeholder="Password (1 uppercase, 1 special character)"
-                class="field"
-                name="password"
-                pattern="^(?=.*[A-Z])(?=.*[@&^*]).{8,}$"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                class="field"
-                name="confirm_password"
-                required
-              />
+              <div class="input_group">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  class="field"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  class="field"
+                  name="email"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  class="field"
+                  name="phone"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="text"
+                  placeholder="Store Name"
+                  class="field"
+                  name="store_name"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="text"
+                  placeholder="Store Address"
+                  class="field"
+                  name="store_address"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="password"
+                  placeholder="Password (1 uppercase, 1 special character)"
+                  class="field"
+                  name="password"
+                  pattern="^(?=.*[A-Z])(?=.*[@&^*]).{8,}$"
+                  required
+                />
+              </div>
+              <div class="input_group">
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  class="field"
+                  name="confirm_password"
+                  required
+                />
+              </div>
 
               <button type="submit" class="field" id="submit_btn">
                 Create Account
