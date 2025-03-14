@@ -126,11 +126,9 @@ h3 {
   padding: 10px;
   font-size: 16px;
   font-weight: 400;
-  /* Removed display: none */
 }
 
 .field {
-  /* Removed display: none */
   animation: rise 0.5s ease-in-out;
 }
 
@@ -251,14 +249,4 @@ input:focus {
   outline: none;
   border-color: var(--accent_reso);
   box-shadow: 0 0 0 2px rgba(115, 7, 247, 0.2);
-}
-@keyframes fade_out {
-  from {
-    transform: translateY(-40px);
-    /* z-index:1000000000000000000000000000000000000000000000; */
-  }
-
-  to {
-    transform: translateY(0px);
-  }
 }

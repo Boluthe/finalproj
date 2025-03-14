@@ -1,124 +1,88 @@
-let admin_form=document.querySelector("#admin_form");
-let submit=document.querySelector("#sale_submit");
+document.addEventListener("DOMContentLoaded", function () {
+  let admin_form = document.querySelector("#admin_form");
+  let submit = document.querySelector("#submit_btn");
+  let password = document.querySelector("input[name='password']");
+  let confirm_password = document.querySelector(
+    "input[name='confirm_password']"
+  );
+  let inputs = document.querySelectorAll("input.field");
+  let message = document.querySelector(".message");
 
+  // Initially disable the submit button
+  submit.disabled = true;
 
-let form_fields=document.querySelectorAll("#data");
-let message=document.querySelector(".message");
+  // Check form validity whenever an input changes
+  inputs.forEach((input) => {
+    input.addEventListener("input", function () {
+      // Check if all inputs are filled
+      let allFilled = Array.from(inputs).every(
+        (input) => input.value.trim() !== ""
+      );
 
+      // Check if passwords match
+      let passwordsMatch = password.value === confirm_password.value;
 
+      // Enable or disable submit button
+      submit.disabled = !(allFilled && passwordsMatch);
 
-form_fields.forEach((datum, i)=>{
-
-    datum.setAttribute('autocomplete', 'off');
-    datum.addEventListener("input", ()=>{
-        
-    if(form_fields[5].value!==form_fields[4].value){
-        submit.disabled =true;
-    }
-
-    // else{
-    //     submit.disabled =false;
-    // }
-    
-
-    
-
-    })
-})
-
-
-
-
-
-admin_form.addEventListener("submit", (k)=>{
-    k.preventDefault();
-
-    const form_data=new FormData(admin_form);
-
-    fetch("process_admin.php", {
-        method: 'POST',
-        body: form_data
-    })
-
-    .then(response=> response.json())
-    .then(data=>{
-        if(data.status==='success'){
-
-
-            message.style.display='flex';
-            message.textContent="account created successfully"
-            submit.disabled =true;
-
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-
-            form_fields.forEach(datum => {
-                datum.value="";
-              
-
-            });
+      // Visual feedback for password match
+      if (password.value && confirm_password.value) {
+        if (passwordsMatch) {
+          confirm_password.style.borderColor = "green";
+        } else {
+          confirm_password.style.borderColor = "red";
         }
-
-
-        else if(
-            data.status==='used_email'
-        ){
-            message.style.display='flex';
-            message.textContent="email already in use"
-
-            
-                form_fields[1].value="";
-                form_fields[4].value="";
-                submit.disabled =true;
-        
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-        }
-
-
-        else if(
-            data.status==='used_store'
-        ){
-            message.style.display='flex';
-            message.textContent="store with name already exists"
-
-            
-                form_fields[3].value="";
-                form_fields[4].value="";
-                submit.disabled =true;
-        
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-        }
-
-
-        else if(data.status==='invalid_password'){
-            message.style.display='flex';
-            message.textContent="password too weak"
-
-            
-                form_fields[4].value="";
-                form_fields[5].value="";
-                submit.disabled =true;
-
-        
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-        }
-
-        else{
-            console.log(`Error: ${data.message}`)
-        }
-    })
-
-    .catch(error => {
-        console.error('Error:', error);
-        console.log('An unexpected error occurred.') ;
+      }
     });
+  });
 
+  admin_form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-})
+    // Disable button during submission
+    submit.disabled = true;
+
+    const formData = new FormData(this);
+
+    fetch("create_admin.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.status === "success") {
+          // Show success message
+          showMessage(data.message);
+          // Redirect after a short delay
+          setTimeout(() => {
+            window.location.href = "admin_dashboard.html";
+          }, 1500);
+        } else {
+          // Show error message and re-enable button
+          showMessage(data.message);
+          submit.disabled = false;
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showMessage("An unexpected error occurred. Please try again.");
+        submit.disabled = false;
+      });
+  });
+
+  // Function to show messages
+  function showMessage(text) {
+    message.textContent = text;
+    message.style.display = "flex";
+
+    // Hide message after 3 seconds
+    setTimeout(() => {
+      message.style.display = "none";
+    }, 3000);
+  }
+});

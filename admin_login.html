@@ -1,55 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>  
-    <link rel="stylesheet" href="css/auth.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="message" id="message">
-       
-    </div>
+  <head>
+    <script
+      src="https://kit.fontawesome.com/b782cf5553.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/auth.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <div class="message" id="message"></div>
     <div class="header">
-        <div class="logo_cont">
-            QuickTrack
-        </div>
-
-        <div class="mid_cont">
-          
-        </div>
-
-        <div class="last_cont">
-           <ul>
-           <a href="login.html"><li>Login</li></a> 
-           </ul>
-        </div>
+      <a href="index.html">
+        <div class="logo_cont">QuickTrack</div>
+      </a>
+      <div class="mid_cont"></div>
+      <div class="last_cont">
+        <ul>
+          <a href="login.html"><li>Login</li></a>
+        </ul>
+      </div>
     </div>
-
     <div class="hero">
-        <div class="container form_cont">
-            <form id="login_form"><div class="cent">
-                 <h1>Login</h1>
-
-
-                 <div class="ico field">
-                    <i class="fa-solid fa-user-tie"></i>
-                 </div>
- 
-      
-                
-                 <input type="email" placeholder="email" id="data" class="field" name="email">
-                 <input type="password" placeholder="password" id="data" class="field" name="password">
-
- 
-                 <button disabled="disabled" id="sale_submit" class="field">Submit</button>
-             </div></form> 
-         </div>
- 
+      <div class="container form_cont">
+        <form id="login_form">
+          <div class="cent">
+            <h1>Login</h1>
+            <div class="ico field">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <input
+              type="email"
+              placeholder="Email"
+              id="email"
+              class="field"
+              name="email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              class="field"
+              name="password"
+              required
+            />
+            <button disabled="disabled" id="sale_submit" class="field">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</body>
-<script src="js/dom.js"></script>
-<script src="js/dom2.js"></script>
-<script src="js/admin_login.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/dom2.js"></script>
+    <script src="js/admin_login.js"></script>
+  </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Track | Dashboard</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo_cont">Quick Track</div>
+        <nav class="nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="account.html">Account Management</a></li>
+            </ul>
+        </nav>
+        <div class="logout">
+            <a href="logout.php"><i class="fa-solid fa-sign-out-alt"></i></a>
+        </div>
+    </header>
+    <aside class="sidebar">
+      <ul>
+          <li><a href="dashboard.html" class="active"><i class="fa-solid fa-store"></i> Branches</a></li>
+          <li><a href="admin_notifications.html"><i class="fa-solid fa-bell"></i> Notifications</a></li>
+          <li><a href="logout.php"><i class="fa-solid fa-door-open"></i> Sign Out</a></li>
+      </ul>
+  </aside>
+    <main class="main-content">
+        <section class="hero">
+            <div class="container">
+                <div class="card_add">
+                    <a href="create_branch.html" class="add-button">
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                    <h4>New Branch</h4>
+                </div>
+                <!-- Add more content here if needed -->
+            </div>
+        </section>
+    </main>
+    <script src="js/dom.js"></script>
+    <script src="js/dom2.js"></script>
+    <script src="js/admin_session.js"></script>
+    <script src="js/admin_dashboard.js"></script>
+    <script src="js/notifications.js"></script>
+</body>
+</html>

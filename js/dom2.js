@@ -1,156 +1,72 @@
-let items=document.querySelectorAll(".items ul li");
-let categories=document.querySelectorAll(".categories ul li");
-let product=document.querySelector(".product_data");
-let cat_value=document.querySelector(".cat_value");
-let item_sel= document.querySelector(".item_selector")
-let cat_sel= document.querySelector(".cat_selector")
-let item_h4=document.querySelector(".item_selector h4")
-let cat_h4=document.querySelector(".cat_selector h4")
-let anchors=document.querySelectorAll(".reg_card")
-let fields=document.querySelectorAll(".field")
-let fields_block=document.querySelectorAll(".field_block")
-let trs=document.querySelectorAll(".sales tr")
-
-
-
-fields.forEach((field, i) =>{
-    setTimeout(() => {
-        field.style.display = 'flex'; 
-      }, i * 100); 
-})
-
-fields_block.forEach((field, i) =>{
-    setTimeout(() => {
-        field.style.display = 'block'; 
-      }, i * 100); 
-})
-
-
-trs.forEach((tr, i) =>{
-    setTimeout(() => {
-        tr.style.display = 'table-row'; 
-      }, i * 100); 
-})
-
-anchors.forEach((anchor, i) =>{
-    setTimeout(() => {
-        anchor.style.display = 'block'; 
-      }, i * 100); 
-})
-
-
-items.forEach((item, i)=>{
-    item_sel.addEventListener("mouseenter", ()=>{
-        document.querySelector(".items").style.display="block";
-    
-        
-    
-        setTimeout(() => {
-            item.style.display="block";
-        }, i*100);
-    
-    })
-})
-
-
-
-items.forEach((item, i)=>{
-    item_sel.addEventListener("mouseleave", ()=>{
-        document.querySelector(".items").style.display="none";
-    
-        
-    
-      
-            item.style.display="none";
-        
-    
-    })
-})
-
-
-categories.forEach((category, i)=>{
-    cat_sel.addEventListener("mouseenter", ()=>{
-        document.querySelector(".categories").style.display="block";
-    
-        
-    
-        setTimeout(() => {
-            category.style.display="block";
-        }, i*100);
-    
-    })
-})
-
-
-
-categories.forEach((category, i)=>{
-    cat_sel.addEventListener("mouseleave", ()=>{
-        document.querySelector(".categories").style.display="none";
-    
-        
-    
-      
-            category.style.display="none";
-        
-    
-    })
-})
-
-
-
-
-// item_sel.addEventListener("mouseleave", ()=>{
+document.addEventListener("DOMContentLoaded", function() {
+    let hideTimer;
+    let search = document.querySelector("#search");
+    let search_trig = document.querySelector("#search_trig");
+    let search_bar = document.querySelector(".search_bar");
+    let data = document.querySelectorAll(".field");
+    let sale_submit = document.querySelector("#sale_submit");
+    let item_cards = document.querySelectorAll(".item_card");
+    let fileInput = document.querySelector("#img");
+    let img_label = document.querySelector("#img_label");
   
-
-//     void item.offsetWidth;
-
-// })
-
-
-
-
-items.forEach((item, i) => {
-    item.addEventListener("click", ()=>{
-        let item_data=item.textContent;
-        // item_h4.classList.add("animate-text");
-        product.value=item_data;
-        const event = new Event("input", { bubbles: true });
-
-        product.dispatchEvent(event);
-        item_h4.textContent=item_data;
-
-        item_h4.classList.remove("animate-text");
-
-        void item_h4.offsetWidth;
-        item_h4.classList.add("animate-text");
-
-        document.querySelector(".items").style.display="none";
-    })
-
-
-   
-});
-
-
-
-categories.forEach((category, i) => {
-    category.addEventListener("click", ()=>{
-        let item_data=category.textContent;
-        // item_h4.classList.add("animate-text");
-        cat_value.value=item_data;
-        const event = new Event("input", { bubbles: true });
-
-        cat_value.dispatchEvent(event);
-        cat_h4.textContent=item_data;
-
-        cat_h4.classList.remove("animate-text");
-
-        void cat_h4.offsetWidth;
-        cat_h4.classList.add("animate-text");
-
-        document.querySelector(".categories").style.display="none";
-    })
-
-
-   
-});
+    // Animate item cards appearance
+    if (item_cards.length > 0) {
+      item_cards.forEach((item_card, i) => {
+        setTimeout(() => {
+          item_card.style.display = "block";
+        }, i * 100);
+      });
+    }
+  
+    // Form validation - enable submit button only when all fields are filled
+    if (data.length > 0 && sale_submit) {
+      data.forEach((field) => {
+        field.addEventListener("input", () => {
+          let allFilled = Array.from(data).every(
+            (field) => field.value.trim() !== ""
+          );
+          sale_submit.disabled = !allFilled;
+        });
+      });
+    }
+  
+    // File input handling for image uploads
+    if (fileInput && img_label) {
+      fileInput.addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+          img_label.textContent = this.files[0].name;
+        } else {
+          img_label.textContent = "Choose an image";
+        }
+      });
+    }
+  
+    // Search functionality
+    if (search_trig && search_bar) {
+      search_trig.addEventListener("click", function() {
+        search_bar.classList.toggle("active");
+        if (search_bar.classList.contains("active")) {
+          search.focus();
+        }
+      });
+      
+      // Close search bar when clicking outside
+      document.addEventListener("click", function(e) {
+        if (!search_bar.contains(e.target) && !search_trig.contains(e.target)) {
+          search_bar.classList.remove("active");
+        }
+      });
+    }
+  
+    // Handle form submissions
+    const forms = document.querySelectorAll("form:not(#delete_form)");
+    forms.forEach(form => {
+      form.addEventListener("submit", function(e) {
+        const submitBtn = form.querySelector("button[type='submit']");
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
+        }
+      });
+    });
+  });

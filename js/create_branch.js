@@ -1,52 +1,46 @@
-let man_form=document.querySelector("#manager_form");
-let form_fields=document.querySelectorAll("#data");
-let message=document.querySelector(".message");
-let submit=document.querySelector("#sale_submit");
-let branch_form=document.querySelector("#branch_form")
+document.addEventListener("DOMContentLoaded", () => {
+    const managerSelect = document.querySelector("#manager");
 
-
-
-
-
-branch_form.addEventListener("submit", (e)=>{
-    e.preventDefault()
-
-    const form_data= new FormData(branch_form)
-
-    fetch("create_branch.php", {
-        method: "POST",
-        body: form_data
+    fetch("get_managers.php", {
+        method: "GET"
     })
-
-    .then(res=>res.json())
-    .then(data=>{
-
-        console.log(data.status)
-        if(data.status==="success"){
-            message.style.display='flex';
-            message.textContent="branch created"
-            submit.disabled =true;
-
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-
-            form_fields.forEach(datum => {
-                datum.value="";
-              
-
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "null") {
+            managerSelect.innerHTML = "<option value=''>No Managers Available</option>";
+        } else {
+            data.forEach(manager => {
+                const option = document.createElement("option");
+                option.value = manager.id;
+                option.textContent = manager.name;
+                managerSelect.appendChild(option);
             });
         }
-
-
-        else if(data.status==="exists"){
-            message.style.display='flex';
-            message.textContent="branch with name already exists"
-          
-
-            setTimeout(() => {
-            message.style.display='none';
-            }, 7000);
-        }
     })
-})
+    .catch(error => console.error('Error fetching managers:', error));
+
+    const branchForm = document.querySelector("#branch_form");
+
+    branchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(branchForm);
+
+        fetch("create_branch.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("Branch created successfully!");
+                branchForm.reset();
+            } else if (data.status === "exists") {
+                alert("Branch with this name already exists.");
+            } else {
+                alert("Failed to create branch.");
+            }
+        })
+        .catch(error => console.error('Error creating branch:', error));
+    });
+});

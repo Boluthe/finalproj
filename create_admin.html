@@ -1,112 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script
-      src="https://kit.fontawesome.com/b782cf5553.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="css/create_manager.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Admin Account</title>
-  </head>
-  <body>
+<head>
+    <script src="https://kit.fontawesome.com/b782cf5553.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="css/create_manager.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Branch</title>
+</head>
+<body>
     <div class="message" id="message"></div>
-
     <div class="header">
-      <a href="index.html">
-        <div class="logo_cont">QuickTrack</div>
-      </a>
-      <div class="mid_cont"></div>
-      <div class="last_cont"></div>
-    </div>
-
-    <div class="hero">
-      <div class="container form_cont">
-        <div class="form_box">
-          <form
-            id="admin_form"
-            action="create_admin.php"
-            method="POST"
-            autocomplete="off"
-          >
-            <div class="cent">
-              <h1>Create Store Admin Account</h1>
-              <div class="ico field">
-                <i class="fa-solid fa-people-roof"></i>
-              </div>
-
-              <input
-                type="text"
-                placeholder="Full Name"
-                class="field"
-                name="name"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                class="field"
-                name="email"
-                autocomplete="off"
-                required
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                class="field"
-                name="phone"
-                required
-              />
-
-              <!-- Add these new fields for store creation -->
-              <input
-                type="text"
-                placeholder="Store Name"
-                class="field"
-                name="store_name"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Store Address"
-                class="field"
-                name="store_address"
-                required
-              />
-
-              <input
-                type="password"
-                placeholder="Password (1 uppercase, 1 special character)"
-                class="field"
-                name="password"
-                pattern="^(?=.*[A-Z])(?=.*[@&^*]).{8,}$"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                class="field"
-                name="confirm_password"
-                required
-              />
-
-              <button type="submit" class="field" id="submit_btn">
-                Create Account
-              </button>
-            </div>
-          </form>
+        <div class="logo_cont"></div>
+        <div class="mid_cont">
+            <ul>
+                <a href="dashboard.html"><li>dashboard</li></a>
+                <a href="account.html"><li>account management</li></a>
+            </ul>
         </div>
-      </div>
+        <div class="last_cont">
+            <ul></ul>
+        </div>
     </div>
-
-    <div class="popup" id="popup">
-      <div class="popup-content">
-        <span class="close-btn" id="close-btn">&times;</span>
-        <p id="popup-message"></p>
-      </div>
+    <div class="hero">
+        <div class="container form_cont">
+            <form id="branch_form" autocomplete="off">
+                <div class="cent">
+                    <h1>Create Branch Account</h1>
+                    <div class="ico field">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <input type="text" placeholder="branch name(e.g branch 1)" id="data" class="field" name="name">
+                    <input type="text" placeholder="address" id="data" class="field" name="address" autocomplete="off">
+                    <div class="field">
+                        <label for="manager">Select Manager:</label>
+                        <select id="manager" name="manager" class="field">
+                            <option value="">Select Manager</option>
+                            <!-- Managers will be populated here -->
+                        </select>
+                    </div>
+                    <button disabled="disabled" id="sale_submit" class="field">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <script src="js/process_admin.js"></script>
-  </body>
+    <script src="js/dom.js"></script>
+    <script src="js/dom2.js"></script>
+    <script src="js/admin_session.js"></script>
+    <script src="js/create_branch.js"></script>
+</body>
 </html>
