@@ -73,7 +73,11 @@ if (!empty($_GET['sort_by'])) {
 }
 
 $stmt = mysqli_prepare($conn, $sql . $order);
-mysqli_stmt_bind_param($stmt, $types, ...$params);
+$bind_values = [$types];
+foreach ($params as $key => $value) {
+    $bind_values[] = &$params[$key];
+}
+call_user_func_array('mysqli_stmt_bind_param', array_merge([$stmt], $bind_values));
 mysqli_stmt_execute($stmt);
 $query = mysqli_stmt_get_result($stmt);
 
