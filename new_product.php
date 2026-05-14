@@ -24,7 +24,11 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
     $original_upload_name = $_FILES['image']['name'] ?? '';
     $upload_extension = strtolower(pathinfo(basename($original_upload_name), PATHINFO_EXTENSION));
     $upload_extension = preg_replace("/[^A-Za-z0-9]/", "", $upload_extension);
-    $img_input = uniqid("product_", true) . ($upload_extension !== "" ? "." . $upload_extension : ".bin");
+    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+    if (!in_array($upload_extension, $allowed_extensions, true)) {
+        $upload_extension = 'bin';
+    }
+    $img_input = uniqid("product_", true) . "." . $upload_extension;
 
     $temp_img=$_FILES['image']['tmp_name'];
     if(!$dateTime){
@@ -77,16 +81,16 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
                     throw new Exception("purchase insert failed");
                 }
 
+                if (!empty($temp_img) && !move_uploaded_file($temp_img, "./pictures/$img_input")) {
+                    throw new Exception("upload failed");
+                }
+
                 mysqli_commit($conn);
             } catch (Throwable $e) {
                 mysqli_rollback($conn);
                 $query = false;
             }
         }
-
-         if($query && !empty($temp_img)) {
-            move_uploaded_file($temp_img, "./pictures/$img_input");
-         }
          if($query){
 
             
