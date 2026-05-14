@@ -21,11 +21,10 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
     $quantity = filter_input(INPUT_POST, "quantity", FILTER_VALIDATE_INT);
     $supplier= htmlentities($_POST["supplier"] ?? "");
     $category = trim($_POST["category"] ?? "");
-    $img_input = basename($_POST["img_input"] ?? "");
-    $img_input = preg_replace("/[^A-Za-z0-9._-]/", "_", $img_input);
-    if ($img_input === "") {
-        $img_input = uniqid("product_", true) . ".bin";
-    }
+    $original_upload_name = $_FILES['image']['name'] ?? '';
+    $upload_extension = strtolower(pathinfo(basename($original_upload_name), PATHINFO_EXTENSION));
+    $upload_extension = preg_replace("/[^A-Za-z0-9]/", "", $upload_extension);
+    $img_input = uniqid("product_", true) . ($upload_extension !== "" ? "." . $upload_extension : ".bin");
 
     $temp_img=$_FILES['image']['tmp_name'];
     if(!$dateTime){
@@ -85,7 +84,7 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
             }
         }
 
-         if (!empty($temp_img)) {
+         if($query && !empty($temp_img)) {
             move_uploaded_file($temp_img, "./pictures/$img_input");
          }
          if($query){
