@@ -46,7 +46,7 @@ $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
         $query = false;
         if ($store !== "") {
             $stmt = mysqli_prepare($conn, "UPDATE inventory SET name = ?, quantity = ?, date = ? WHERE id = ? AND store = ?");
-            mysqli_stmt_bind_param($stmt, "siiss", $name, $quantity, $date, $id, $store);
+            mysqli_stmt_bind_param($stmt, "sisis", $name, $quantity, $date, $id, $store);
             $query = mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         }
