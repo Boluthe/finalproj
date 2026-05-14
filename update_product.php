@@ -19,12 +19,13 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
 $name = htmlentities($_POST["name"] ?? "");
 $quantity = filter_input(INPUT_POST, "quantity", FILTER_VALIDATE_INT);
 $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
-$date = $dateTime ? $dateTime->format("Y-m-d") : "";
 
     if(!$dateTime){
         echo json_encode(['status'=>'invalid_date']);
         exit();
     }
+
+    $date = $dateTime->format("Y-m-d");
 
     if($date < date("Y-m-d")){
         echo json_encode(['status'=>'past_date']);
@@ -45,7 +46,7 @@ $date = $dateTime ? $dateTime->format("Y-m-d") : "";
         $query = false;
         if ($store !== "") {
             $stmt = mysqli_prepare($conn, "UPDATE inventory SET name = ?, quantity = ?, date = ? WHERE id = ? AND store = ?");
-            mysqli_stmt_bind_param($stmt, "sisis", $name, $quantity, $date, $id, $store);
+            mysqli_stmt_bind_param($stmt, "siiss", $name, $quantity, $date, $id, $store);
             $query = mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         }

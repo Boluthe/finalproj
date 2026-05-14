@@ -21,7 +21,6 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
     $quantity = filter_input(INPUT_POST, "quantity", FILTER_VALIDATE_INT);
     $supplier= htmlentities($_POST["supplier"] ?? "");
     $category = trim($_POST["category"] ?? "");
-    $date = $dateTime ? $dateTime->format("Y-m-d") : "";
     $img_input= htmlentities($_POST["img_input"] ?? "");
 
     $temp_img=$_FILES['image']['tmp_name'];
@@ -29,6 +28,8 @@ $dateTime = DateTime::createFromFormat("d/m/Y", $_POST["date"]);
         echo json_encode(['status'=>'invalid_date']);
         exit();
     }
+
+    $date = $dateTime->format("Y-m-d");
 
     if($date < date("Y-m-d")){
         echo json_encode(['status'=>'past_date']);
