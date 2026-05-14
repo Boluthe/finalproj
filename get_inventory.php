@@ -5,73 +5,77 @@
 include "connect.php";
 session_start();
 
-$store = $_SESSION['store'];
-$filters = [];
+$store = $_SESSION['store'] ?? "";
+$sql = "SELECT * FROM inventory WHERE store = ?";
+$types = "s";
+$params = [$store];
 $order = "";
 
-
+if ($store === "") {
+    echo json_encode(["status" => "null"]);
+    exit();
+}
 
 if (!empty($_SESSION['branch'])) {
-    $branch = $_SESSION['branch'];
-    $filters[] = "branch = '$branch'";
+    $sql .= " AND branch = ?";
+    $types .= "s";
+    $params[] = $_SESSION['branch'];
 }
 
-
-
-
-
-
-
-// Check for filters
 if (!empty($_GET['supplier'])) {
-    $supplier = mysqli_real_escape_string($conn, $_GET['supplier']);
-    $filters[] = "supplier = '$supplier'";
+    $sql .= " AND supplier = ?";
+    $types .= "s";
+    $params[] = $_GET['supplier'];
 }
-
 
 if (!empty($_GET['category'])) {
-    $category = mysqli_real_escape_string($conn, $_GET['category']);
-    $filters[] = "category = '$category'";
+    $sql .= " AND category = ?";
+    $types .= "s";
+    $params[] = $_GET['category'];
 }
 
-
-
-if(isset($_GET["v"])){
-    $v = htmlentities($_GET['v']) ;
-    $filters[] = "branch = '$v'";
+if (isset($_GET["v"]) && $_GET["v"] !== "") {
+    $sql .= " AND branch = ?";
+    $types .= "s";
+    $params[] = $_GET["v"];
 }
 
-
-if(isset($_GET["q"])){
-    $q = $_GET['q'];
-    $filters[] = "id = '$q'";
+if (isset($_GET["q"])) {
+    $q = filter_input(INPUT_GET, "q", FILTER_VALIDATE_INT);
+    if ($q) {
+        $sql .= " AND id = ?";
+        $types .= "i";
+        $params[] = $q;
+    }
 }
-
 
 if (!empty($_GET['search'])) {
-    $search = mysqli_real_escape_string($conn, $_GET['search']);
-    $filters[] = "name like '%$search%'";
+    $sql .= " AND name LIKE ?";
+    $types .= "s";
+    $params[] = "%" . $_GET['search'] . "%";
 }
 
-// Build the WHERE clause
-$where = "";
-if (count($filters) > 0) {
-    $where = " AND " . implode(" AND ", $filters);
-}
-
-
-
-// Handle sorting
 if (!empty($_GET['sort_by'])) {
-    $sort_by = mysqli_real_escape_string($conn, $_GET['sort_by']);
-
-    $sort_by = $sort_by==="expiry date"?'date':$sort_by;
-    $sort_order = isset($_GET['order']) && strtolower($_GET['order']) === 'descending' ? 'DESC' : 'ASC';
-    $order = "ORDER BY $sort_by $sort_order";
+    $sort_by = strtolower(trim($_GET['sort_by']));
+    $sort_map = [
+        'name' => 'name',
+        'supplier' => 'supplier',
+        'category' => 'category',
+        'quantity' => 'quantity',
+        'date' => 'date',
+        'expiry date' => 'date',
+        'id' => 'id'
+    ];
+    if (isset($sort_map[$sort_by])) {
+        $sort_order = (isset($_GET['order']) && strtolower($_GET['order']) === 'descending') ? 'DESC' : 'ASC';
+        $order = " ORDER BY " . $sort_map[$sort_by] . " " . $sort_order;
+    }
 }
 
-// Query with filters and sorting
-$query = mysqli_query($conn, "SELECT * FROM inventory WHERE store='$store'   $where $order");
+$stmt = mysqli_prepare($conn, $sql . $order);
+mysqli_stmt_bind_param($stmt, $types, ...$params);
+mysqli_stmt_execute($stmt);
+$query = mysqli_stmt_get_result($stmt);
 
 $data = [];
 
@@ -103,4 +107,5 @@ else{
 
 
 echo json_encode($data);
+mysqli_stmt_close($stmt);
 ?>
